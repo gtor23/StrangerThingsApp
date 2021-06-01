@@ -1,11 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { publicPosts } from '../api'
 
 // import AddPost from './AddPost'
 
-const Posts = () =>{
+const Posts = (props) =>{
+    {publicPosts, setPublicPosts} = props;
+    //LEFT OFF HERE TRYING TO PULL DATA TO MAP POSTS ON PAGE
 
+
+    //const something = publicPosts()
+      //  .then()
+    //console.log('check', something)
+  
+    
     return (
 
         <>
@@ -14,7 +23,7 @@ const Posts = () =>{
             
 
             {/* Do wee need <form> here? */}
-                <Link to = '/addpost'> Add Post </Link>
+                {/*<Link to = '/addpost'> Add Post </Link>*/}
 
             {/* why doesnt this work? */}
             {/* <Switch>
@@ -28,7 +37,5 @@ const Posts = () =>{
 
 
 }
-
-// ReactDOM.render
 
 export default Posts;

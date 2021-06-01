@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
-import {grabToken, clearToken} from './api'
+import {grabToken, clearToken, test} from './api'
 import {Register, Posts, Profile, AddPost, Nav} from './components'
 
 const Main = () =>{
 
-     const [loggedIn, setIsLoggedIn] = useState(grabToken());
+    const [loggedIn, setIsLoggedIn] = useState(grabToken());
+    const [publicPosts, setPublicPosts] = useState ([])
 
 
     return (
@@ -35,7 +36,9 @@ const Main = () =>{
             {loggedIn ? (
                 <>
                 <div className ='logout'>
-                <h1 className='loggedin'>Sucessful Log in!</h1>
+                <h1 className='loggedin'>Sucessful Log in!</h1> {/*if logged in then show posts from other users?(posts from api)*/}
+                {/*<button onClick={test}>User test button</button>*/}
+                <Posts publicPosts={publicPosts} setPublicPosts={setPublicPosts}/>
                 <span>
                     <button className='logoutbutton' onClick={() => {
                         clearToken() 
