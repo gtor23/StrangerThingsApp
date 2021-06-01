@@ -21,6 +21,11 @@ export const clearToken = () => {
     localStorage.removeItem('given-token');
 }
 
+//crerate constants for users?
+export const activeUser = () => {
+    return 
+}
+
 
 //Headers?????????
 function makeHeaders(){
@@ -38,7 +43,7 @@ function makeHeaders(){
 // Do some authentication?
 
 export const authen = async(username,password, checkUser = false) => {
-    const url = `${BASE_URL}/users` + (checkUser ? '/register' : 'login');
+    const url = `${BASE_URL}/users` + (checkUser ? '/register' : '/login');
 
     //hasAccount for checkUser
 
@@ -51,11 +56,11 @@ export const authen = async(username,password, checkUser = false) => {
             user: {
                 username: username,
                 password: password,
-            }
-        })
+            },
+        }),
         });
 
-       const {error, data} = await response.json;
+       const {error, data} = await response.json();
 
         //gather data for token
         //set as token and get stored in localStorage
@@ -80,6 +85,20 @@ export const hitAPI = async(method, endPoint, keyBody) => {
         result.body = JSON.stringify(keyBody);
     }
 
+    const response = await fetch(`${BASE_URL}${endpoint}`, result)
+
+    const {error, data} = await response.json();
+
+
+       if (error){
+           throw Error(error.message)
+       }else if (data && data.token){
+               givenToken(data.token);
+           }
+       
+        return data
+
+
 
 }
 
@@ -101,4 +120,5 @@ export const hitAPI = async(method, endPoint, keyBody) => {
 //reference the endpoint (/update, /post, etc)
 
 //more token work
+
 

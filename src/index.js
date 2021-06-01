@@ -39,9 +39,9 @@ const Main = () =>{
                 <span>
                     <button className='logoutbutton' onClick={() => {
                         clearToken() 
+                        // setIsLoggedIn(false) 
                         setIsLoggedIn('') 
-                        // setIsLoggedIn() 
-                        window.location.reload(false)
+                        window.location.reload()
                     }}> Log Out</button>
                 </span>
                 </div>

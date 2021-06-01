@@ -117,7 +117,7 @@ const Register = (props) =>{
                 try{
                     const result = await authen(username, password, true);
                     setIsLoggedIn(true);
-                    // window.location.reload(false);
+                    // window.location.reload();
                 }catch (error){
                     setErrorMessage(error.message);
                 }
@@ -127,7 +127,7 @@ const Register = (props) =>{
                 try{
                     const result = await authen(username, password);
                     setIsLoggedIn(true);
-                    // window.location.reload(false);
+                    // window.location.reload();
                 }catch (error){
                     setErrorMessage(error.message);
                 }
