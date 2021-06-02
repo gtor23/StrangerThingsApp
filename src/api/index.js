@@ -12,6 +12,11 @@ export const clearToken = () => {
     localStorage.removeItem('given-token');
 }
 
+//crerate constants for users?
+// export const activeUser = () => {
+//     return 
+// }
+
 
 //Headers?????????
 function makeHeaders(){
@@ -97,7 +102,18 @@ export const publicPosts = async () => {
     
     
     const data = await response.json();
-    return data
+    
+    console.log(data)
+    
+    // fetch('https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-FT/posts')
+    // .then(response => response.json())
+    // .then(result => {
+    //   console.log(result);
+    // })
+    // .catch(console.error);
+
+    // return result
+  
 }
 
 /*export const test = async () => {
@@ -122,6 +138,20 @@ export const publicPosts = async () => {
         result.body = JSON.stringify(keyBody);
     }
 
+    const response = await fetch(`${BASE_URL}${endpoint}`, result)
+
+    const {error, data} = await response.json();
+
+
+       if (error){
+           throw Error(error.message)
+       }else if (data && data.token){
+               givenToken(data.token);
+           }
+       
+        return data
+
+
 
 }*/
 
@@ -143,4 +173,5 @@ export const publicPosts = async () => {
 //reference the endpoint (/update, /post, etc)
 
 //more token work
+
 

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
-import {grabToken, clearToken, test} from './api'
+import {grabToken, clearToken, test, publicPosts} from './api'
 import {Register, Posts, Profile, AddPost, Nav} from './components'
 
 const Main = () =>{
@@ -38,13 +38,13 @@ const Main = () =>{
                 <div className ='logout'>
                 <h1 className='loggedin'>Sucessful Log in!</h1> {/*if logged in then show posts from other users?(posts from api)*/}
                 {/*<button onClick={test}>User test button</button>*/}
-                <Posts publicPosts={publicPosts} setPublicPosts={setPublicPosts}/>
+                <Posts publicPosts={publicPosts} setPublicPosts={setPublicPosts} loggedIn ={loggedIn} setIsLoggedIn ={setIsLoggedIn} />
                 <span>
                     <button className='logoutbutton' onClick={() => {
                         clearToken() 
+                        // setIsLoggedIn(false) 
                         setIsLoggedIn('') 
-                        // setIsLoggedIn() 
-                        window.location.reload(false)
+                        window.location.reload()
                     }}> Log Out</button>
                 </span>
                 </div>
