@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
-import {authen} from '../api'
-
-// import {authen} from './api'
+import {register, login} from '../api'
 
 // function checkUsername(username) {
 //     if (username.length >= 8) {
@@ -38,61 +36,16 @@ import {authen} from '../api'
 //     }
 // }
 
-// const Register = () =>{
-//     const [username, setUsername] = useState('')
-//     const [password, setPassword] = useState('')    
-//     // const [confirmPassword, setConfirmPassword] = useState('')    
-//     const [confirmPassword, setConfirmPassword] = useState(null)    
-
-
-
-//     return(
-
-//         <>
-//         <h1>Register </h1>
-                
-//         <form> 
-//             <label>Username:</label>
-//             <input type ='text' 
-//                 //id='username'
-//                 onChange={ (event) => { setUsername(event.target.value) } }></input>
-//         </form>
-//         <form > 
-//             <label>Password:</label>
-//             <input type='text' 
-//             id='password'
-//             onChange={ (event) => { setPassword(event.target.value) } }></input>
-//         </form>
-//         <form > 
-//             <label>Confirm Password:</label>
-//             <input type='text' 
-//             id='confirmPass'
-//             onChange={ (event) => { setConfirmPassword(event.target.value) } }></input>
-//         </form>
-
-//         <button 
-//             className ='createAccount' 
-//             onClick={() => checkInfo(username, password, confirmPassword)}>Create Account</button>
-//         {/* <Link to='/register'>Register</Link> */}
-
-
-//         </>
-//     )
-// }
-
-// export default Register;
-
 const Register = (props) =>{
-    
-    const {setIsLoggedIn} = props;
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('') 
     // const [confirmPassword, setConfirmPassword] = useState(null)
     const [errorMessage, setErrorMessage] = useState(null);
+    const {setIsLoggedIn} = props;
 
-    console.log('the username:' , username);
-    console.log('the password:', password);
+    //console.log('the username:' , username);
+    //console.log('the password:', password);
     return(
 
         <>
@@ -115,9 +68,7 @@ const Register = (props) =>{
 
             <button onClick ={async (event) => {
                 try{
-                    const result = await authen(username, password, true);
-                    setIsLoggedIn(true);
-                    // window.location.reload();
+                    const result = await register(username, password);
                 }catch (error){
                     setErrorMessage(error.message);
                 }
@@ -125,9 +76,8 @@ const Register = (props) =>{
 
             <button onClick ={async (event) => {
                 try{
-                    const result = await authen(username, password);
+                    const result = await login(username, password);
                     setIsLoggedIn(true);
-                    // window.location.reload();
                 }catch (error){
                     setErrorMessage(error.message);
                 }
