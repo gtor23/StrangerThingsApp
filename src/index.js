@@ -3,13 +3,18 @@ import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 import {grabToken, clearToken, test, publicPosts} from './api'
-import {Register, Posts, Profile, AddPost, Nav} from './components'
+import {Register, Posts, Profile, AddPost, Nav, Edit} from './components'
 
 const Main = () =>{
 
     const [loggedIn, setIsLoggedIn] = useState(grabToken());
     const [publicPosts, setPublicPosts] = useState ([])
 
+    useEffect(() => {
+        fetch('https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-FT/posts')
+        .then(response => response.json())
+        .then(result=> setPublicPosts(result.data.posts))
+    }, []);
 
     return (
         
@@ -24,21 +29,27 @@ const Main = () =>{
             {/* <LogIn /> */}
             {/* <Register /> */}
 
-            {/* <Switch>
-                <Route exact path ='/' component = {LogIn} />
+            
+                {/* <Route exact path ='/' component = {LogIn} />
                 <Route path = '/register' component = {Register} />
                 <Route path = '/posts' component = {Posts} />
                 <Route path = '/profile' component = {Profile} />
-                <Route path = '/addpost' component = {AddPost}/>
-            </Switch> */}
+                <Route path = '/addpost' component = {AddPost}/> */}
+                <Route path = '/editpost/:id' component = {Edit}/>
 
+            {/* </Switch> */}
 
+                {/* all of our posts are imported as Posts */}
+
+    
             {loggedIn ? (
                 <>
                 <div className ='logout'>
                 <h1 className='loggedin'>Sucessful Log in!</h1> {/*if logged in then show posts from other users?(posts from api)*/}
                 {/*<button onClick={test}>User test button</button>*/}
+                
                 <Posts publicPosts={publicPosts} setPublicPosts={setPublicPosts} loggedIn ={loggedIn} setIsLoggedIn ={setIsLoggedIn} />
+                <Edit publicPosts = {publicPosts} setPublicPosts = {setPublicPosts} />
                 <span>
                     <button className='logoutbutton' onClick={() => {
                         clearToken() 
@@ -53,6 +64,8 @@ const Main = () =>{
                 <Register setIsLoggedIn = {setIsLoggedIn} />
             )}
 
+            
+    
         </div>
 
 
