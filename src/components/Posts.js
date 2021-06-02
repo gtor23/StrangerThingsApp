@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { publicPosts } from '../api'
@@ -6,10 +6,17 @@ import { publicPosts } from '../api'
 // import AddPost from './AddPost'
 
 const Posts = (props) =>{
-    {publicPosts, setPublicPosts} = props;
+    const [allPosts, setAllPosts] = useState([])
+    //{publicPosts, setPublicPosts} = props;
     //LEFT OFF HERE TRYING TO PULL DATA TO MAP POSTS ON PAGE
 
-
+    const something = publicPosts()
+    .then(result => {
+        console.log('result', result)
+        setAllPosts(result)
+    })
+    .catch(console.error)
+    console.log('something', something)
     //const something = publicPosts()
       //  .then()
     //console.log('check', something)
