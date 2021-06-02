@@ -6,7 +6,6 @@ import {grabToken, clearToken, test, publicPosts} from './api'
 import {Register, Posts, Profile, AddPost, Nav, Edit} from './components'
 
 const Main = () =>{
-
     const [loggedIn, setIsLoggedIn] = useState(grabToken());
     const [publicPosts, setPublicPosts] = useState ([])
 
@@ -45,7 +44,7 @@ const Main = () =>{
             {loggedIn ? (
                 <>
                 <div className ='logout'>
-                <h1 className='loggedin'>Sucessful Log in!</h1> {/*if logged in then show posts from other users?(posts from api)*/}
+                <h1 className='loggedin'>Sucessful Log in!</h1> 
                 {/*<button onClick={test}>User test button</button>*/}
                 
                 <Posts publicPosts={publicPosts} setPublicPosts={setPublicPosts} loggedIn ={loggedIn} setIsLoggedIn ={setIsLoggedIn} />
