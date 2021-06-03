@@ -9,6 +9,7 @@ const Main = () =>{
 
     const [loggedIn, setIsLoggedIn] = useState(grabToken());
     const [publicPosts, setPublicPosts] = useState ([])
+    // const [postId, setPostsId] = useState(null)
 
     useEffect(() => {
         fetch('https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-FT/posts')
@@ -35,7 +36,7 @@ const Main = () =>{
                 <Route path = '/posts' component = {Posts} />
                 <Route path = '/profile' component = {Profile} />
                 <Route path = '/addpost' component = {AddPost}/> */}
-                <Route path = '/editpost/:id' component = {Edit}/>
+                <Route path = '/editpost/:id' render = {() => <Edit publicPosts = {publicPosts} setPublicPosts = {setPublicPosts} />} /> 
 
             {/* </Switch> */}
 
@@ -49,7 +50,7 @@ const Main = () =>{
                 {/*<button onClick={test}>User test button</button>*/}
                 
                 <Posts publicPosts={publicPosts} setPublicPosts={setPublicPosts} loggedIn ={loggedIn} setIsLoggedIn ={setIsLoggedIn} />
-                <Edit publicPosts = {publicPosts} setPublicPosts = {setPublicPosts} />
+                {/* <Edit publicPosts = {publicPosts} setPublicPosts = {setPublicPosts} /> */}
                 <span>
                     <button className='logoutbutton' onClick={() => {
                         clearToken() 
