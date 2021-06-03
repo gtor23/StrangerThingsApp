@@ -5,6 +5,8 @@ import {grabToken} from '../api'
 
 /* changing only one part of post will delete other sections
 find a way to fill in forms with existing data */
+
+//adding comment for test push
 const Edit = (props) => {
     const {publicPosts, setPublicPosts} = props;
     
