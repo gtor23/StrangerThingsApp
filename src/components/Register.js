@@ -37,7 +37,6 @@ import {register, login} from '../api'
 // }
 
 const Register = (props) =>{
-
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('') 
     // const [confirmPassword, setConfirmPassword] = useState(null)
@@ -47,10 +46,7 @@ const Register = (props) =>{
     //console.log('the username:' , username);
     //console.log('the password:', password);
     return(
-
-        <>
-        
-                
+        <>              
         <form className ='authenticate' onSubmit = {(event) => event.preventDefault()}> 
             <h1> Log In</h1>
 
