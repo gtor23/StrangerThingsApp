@@ -16,8 +16,7 @@ const Edit = (props) => {
     const urlEdit = useParams()
     //console.log('public posts:', publicPosts)
     //giving me a slightly different id?
-    console.log('url id from bar:', urlEdit.id)
-    // console.log(typeof (urlEdit.id))
+    console.log('url id from bar', urlEdit.id)
 
     /*find or filter
         const findPost =  publicPosts.find((post) => {
@@ -30,18 +29,11 @@ const Edit = (props) => {
     const handleSubmit = async(event) => {
         event.preventDefault();
         console.log('title, description, price, location: ', title, description, price, location);
-<<<<<<< HEAD
-        // console.log()
-
-
-        const response = await fetch(`https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-FT/posts/${urlEdit.id}`, {
-=======
      
 
 
         const response = await fetch(`https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-FT/posts/${urlEdit.id}`,
         {
->>>>>>> c727e4068cafeb8200198a61afe5a5cbbdf4c3d3
             method: 'PATCH',
             headers: {
                 'Content-type': 'Application/json',
@@ -54,13 +46,8 @@ const Edit = (props) => {
                     price,
                     location
                 }
-<<<<<<< HEAD
-        })
-    })
-=======
             })
         })
->>>>>>> c727e4068cafeb8200198a61afe5a5cbbdf4c3d3
 
         const data = await response.json();
         console.log('data:', data)
