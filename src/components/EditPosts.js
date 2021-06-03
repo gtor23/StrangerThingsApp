@@ -21,7 +21,8 @@ const Edit = (props) =>{
 
     const urlEdit = useParams()
     //giving me a slightly different id?
-    console.log('url id from bar', urlEdit.id)
+    console.log('url id from bar:', urlEdit.id)
+    // console.log(typeof (urlEdit.id))
 
 
     //find or filter
@@ -41,22 +42,21 @@ const Edit = (props) =>{
         // console.log()
 
 
-        const response = await fetch(`https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-FT/posts/${urlEdit.id}`)
-    //     {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'Content-type': 'Application/json',
-    //             'Authorization': `Bearer ${grabToken()}` 
-    //         },
-    //         body: JSON.stringify({
-    //             post: {
-    //                 title,
-    //                 description,
-    //                 price,
-    //                 location
-    //             }
-    //     })
-    // })
+        const response = await fetch(`https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-FT/posts/${urlEdit.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'Application/json',
+                'Authorization': `Bearer ${grabToken()}` 
+            },
+            body: JSON.stringify({
+                post: {
+                    title,
+                    description,
+                    price,
+                    location
+                }
+        })
+    })
 
         const data = await response.json();
         console.log('data:', data)
