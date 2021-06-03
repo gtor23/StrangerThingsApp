@@ -11,6 +11,7 @@ import Edit from './EditPosts'
 const Posts = (props) =>{
    const {publicPosts, setPublicPosts, loggedIn, setIsLoggedIn, isEditClicked, setIsEditClicked} = props;
 
+   const [postId, setPostsId] = useState(null)
     //const [allPosts, setAllPosts] = useState([])
 
 
@@ -26,9 +27,10 @@ const Posts = (props) =>{
 
     return (
 
-        <>
+        <> 
             <h1>Search Posts</h1>
             <AddPost publicPosts={publicPosts} setPublicPosts={setPublicPosts}/>
+            {/* <Route path = '/editpost/:id' render = {() => <Edit publicPosts = {publicPosts} setPublicPosts = {setPublicPosts} />} /> */}
             {/* <input type ='text' id='postsearch'></input> */}
             
 
@@ -56,6 +58,10 @@ const Posts = (props) =>{
                 <p>{post.location}</p>
             
                 <Link to = {`/editpost/${post._id}`} >Edit</Link>
+
+                {/* <button className = 'editing' onClick ={() => setPostsId(post._id)}> Edit</button> */}
+
+                
 
                 {/* <Route exact path = '/editpost' component = {Edit}/> */}
                 
