@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import {grabToken} from '../api'
 
@@ -7,7 +6,9 @@ const AddPost = ({publicPosts, setPublicPosts}) => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
+    const [username, setUsername] = useState('')
     const [location, setLocation] = useState('')
+    const [willDeliver, setWillDeliver] = useState(false)
 
     const handleSubmit = async(event) => {
         event.preventDefault();
@@ -22,13 +23,14 @@ const AddPost = ({publicPosts, setPublicPosts}) => {
                     title,
                     description,
                     price,
-                    location
+                    username,
+                    location,
+                    willDeliver
                 }
             })
         }) 
 
         const data = await response.json();
-        //setPublicPosts([data, ...publicPosts])
         setPublicPosts([data, ...publicPosts])
     } 
 
@@ -56,6 +58,10 @@ const AddPost = ({publicPosts, setPublicPosts}) => {
                 <input type='text' id='location' 
                 //value={location}
                 onChange={(event) => {setLocation(event.target.value)}}></input>
+
+                <label>Willing to Deliver?</label>
+                <input type='checkbox'
+                onChange={() => {setWillDeliver(true)}}></input>
 
                 <button className ='create'>Create</button>
             </form>
