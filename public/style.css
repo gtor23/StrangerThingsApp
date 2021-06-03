@@ -1,0 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.post {
+    border: solid 2px black ;
+}

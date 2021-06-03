@@ -19,7 +19,8 @@ const Posts = (props) =>{
                     <h1>{post.title}</h1> 
                     <p>{post.description}</p>
                     <h3>Price: {post.price}</h3>
-                    <h2>Seller: {post.author.username}</h2>
+                    {/* causes error but still actually posts after refresh????? */}
+                    <h2>Seller: {post.author.username}</h2> 
                     <h3>Location: {post.location}</h3>            
                     <Link to = {`/editpost/${post._id}`} >Edit</Link>
                 </div>))}                
