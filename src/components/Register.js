@@ -43,34 +43,28 @@ const Register = (props) =>{
     const [errorMessage, setErrorMessage] = useState(null);
     const {setIsLoggedIn} = props;
 
-    //console.log('the username:' , username);
-    //console.log('the password:', password);
-    return(
+    return (
         <>              
         <form className ='authenticate' onSubmit = {(event) => event.preventDefault()}> 
             <h1> Log In</h1>
 
             {errorMessage ? <h2 className = 'error'>{errorMessage}</h2> : null}
-            {/* <label>Username:</label> */}
             
-            <input type ='text' value ={username} onChange={(event) => setUsername(event.target.value)}
-            placeholder ='username'
+            <input type ='text'
             className = 'credential'
-                //id='username'
+            placeholder ='username' 
+            value ={username} 
+            onChange={(event) => setUsername(event.target.value)}
             />            
 
-            <input type = 'password' value = {password} onChange = {(event) => setPassword(event.target.value)}
-            placeholder='password' className = 'credential' />
+            <input type = 'password' 
+            value = {password} 
+            placeholder ='password'
+            className = 'credential' 
+            onChange = {(event) => setPassword(event.target.value)} 
+            />
 
-            <button onClick ={async (event) => {
-                try{
-                    const result = await register(username, password);
-                }catch (error){
-                    setErrorMessage(error.message);
-                }
-            }}> Register </button>
-
-            <button onClick ={async (event) => {
+            <button onClick = {async (event) => {
                 try{
                     const result = await login(username, password);
                     setIsLoggedIn(true);
@@ -79,8 +73,14 @@ const Register = (props) =>{
                 }
             }}> Log-In </button>
 
+            <button onClick ={async (event) => {
+                try{
+                    const result = await register(username, password);
+                }catch (error){
+                    setErrorMessage(error.message);
+                }
+            }}> Register </button>
         </form>
-
         </>
     )
 }

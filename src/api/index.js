@@ -94,7 +94,7 @@ export const publicPosts = async () => {
     .catch(console.error)        return result */ 
 }
 
-/*export const test = async () => {
+/* export const test = async () => {
     const response = await fetch(`${BASE_URL}/users/me`,
     { headers: {
         'Content-type': 'application/json',
@@ -104,7 +104,7 @@ export const publicPosts = async () => {
     const data = await response.json();
     //return data
     console.log(data)
-}*/
+} */
 
 /*export const hitAPI = async(method, endPoint, keyBody) => {
     const result = {
