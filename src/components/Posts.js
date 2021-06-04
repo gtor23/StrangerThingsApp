@@ -38,7 +38,7 @@ const Posts = (props) =>{
         publicPosts.filter(val =>{
             if(val.title.toLowerCase().includes(searchInput.toLowerCase())){
                 
-                setSearchOutput(searchOutput => [...searchOutput, val])
+                setSearchOutput(searchOutput => [val])
             }
         }
             )
