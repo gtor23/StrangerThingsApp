@@ -24,7 +24,8 @@ const Main = () =>{
                 <Route path = '/posts' component = {Posts} />
                 <Route path = '/profile' component = {Profile} />
                 <Route path = '/addpost' component = {AddPost}/> */}
-                <Route path = '/editpost/:id' render = {() => <Edit publicPosts = {publicPosts} setPublicPosts = {setPublicPosts} />} /> 
+                
+                {/* <Route path = '/editpost/:id' render = {() => <Edit publicPosts = {publicPosts} setPublicPosts = {setPublicPosts} />} />  */}
     
             {loggedIn ? (
                 <>
