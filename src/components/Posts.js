@@ -11,7 +11,11 @@ const Posts = (props) =>{
     const [postId, setPostsId] = useState(null)
     const [searchInput, setSearchInput] = useState('')
     const [searchOutput, setSearchOutput] = useState ([])
-    const [showResults, setShowResults] = useState(false)
+    const [addPostClicked, setAddPostClicked] = useState(false)
+
+    const createPost = async () => {
+        setAddPostClicked(true)
+    }
 
     const handleDelete = async (postIdToDelete) => {
         console.log('postIdToDelete: ', postIdToDelete)
@@ -40,7 +44,6 @@ const Posts = (props) =>{
             if(val.title.toLowerCase().includes(searchInput.toLowerCase())){
                 
                 setSearchOutput(searchOutput => [val])
-                // setSearchOutput(searchOutput => [...searchOutput, val])
             }
         }
             )
@@ -59,14 +62,17 @@ const Posts = (props) =>{
                 <input onChange = { event => setSearchInput(event.target.value) } type ='text' placeholder ='Search' />
             </div>
 
-            <AddPost publicPosts={publicPosts} setPublicPosts={setPublicPosts}/>
-            {/* <input type ='text' id='postsearch'></input> */}
-            
-            
+            <button className='addPost'
+            onClick={createPost}>Add Post
+            </button>
+
+            { addPostClicked ? 
+            <AddPost publicPosts={publicPosts} setPublicPosts={setPublicPosts} addPostClicked={addPostClicked} setAddPostClicked={setAddPostClicked}/> 
+            : null }
+                       
             {
             searchInput ?
-            
-            
+           
             <>
             <div className ='output'> {searchOutput.map((post,index) => (
                     <div key = {index} className = 'outsearch'>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import {grabToken} from '../api'
 
-const AddPost = ({publicPosts, setPublicPosts}) => {
+const AddPost = ({publicPosts, setPublicPosts, addPostClicked, setAddPostClicked}) => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
@@ -33,6 +33,10 @@ const AddPost = ({publicPosts, setPublicPosts}) => {
         const data = await response.json();
         setPublicPosts([data, ...publicPosts])
     } 
+
+    const cancelCreate = async() => {
+        setAddPostClicked(false)
+    }
 
     return (
 
@@ -65,6 +69,8 @@ const AddPost = ({publicPosts, setPublicPosts}) => {
 
                 <button className ='create'>Create</button>
             </form>
+            <button className ='cancelCreate'
+            onClick={cancelCreate}>Cancel</button>
         </>
 
     )
