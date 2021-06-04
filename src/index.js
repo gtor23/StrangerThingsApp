@@ -17,8 +17,10 @@ const Main = () =>{
 
     return (        
         <div>
-            <h1>Stranger's Things</h1>            
-            <Nav />
+            <div className="header">
+                <h1>Stranger's Things</h1>            
+                <Nav />
+            </div>
                 {/* <Route exact path ='/' component = {LogIn} />
                 <Route path = '/register' component = {Register} />
                 <Route path = '/posts' component = {Posts} />

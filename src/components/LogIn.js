@@ -12,39 +12,26 @@ const LogIn =(Props) =>{
     const [password, setPassword] = useState('') 
     const [errorMessage, setErrorMessage] = useState(null);
 
-
-
-
     return(
-
-        <>
-
-        
-                
+        <>               
         <form className ='authen' onSubmit = {(event) => event.preventDefault()}> 
             <h1> Log In</h1>
 
             {errorMessage ? <h2 className = 'error'>{errorMessage}</h2> : null}
-            {/* <label>Username:</label> */}
-            
-            <input type ='text' value ={username} onChange={(event) => setUsername(event.target.value)}
+         
+            <input type ='text'
+            value ={username}
+            className = 'login' 
             placeholder ='username'
-            className = 'login'
-                //id='username'
+            onChange={(event) => setUsername(event.target.value)}
             />
 
-            <input type = 'password' value = {password} onChange = {(event) => setPassword(event.target.value)}
-            placeholder='password' className = 'login' />
-
-            {/* <button onClick ={async (event) => {
-                try{
-                    const result = await authen(username, password, true);
-                    setIsLoggedIn(true);
-                    window.location.reload(false);
-                }catch (error){
-                    setErrorMessage(error.message);
-                }
-            }}> Register </button> */}
+            <input type = 'password' 
+            value = {password} 
+            className = 'login'
+            placeholder='password'
+            onChange = {(event) => setPassword(event.target.value)}
+            />
 
             <button onClick ={async (event) => {
                 try{
@@ -55,13 +42,8 @@ const LogIn =(Props) =>{
                     setErrorMessage(error.message);
                 }
             }}> Log In </button>
-
         </form>
-
         </>
-
-
-
     )
 }
 

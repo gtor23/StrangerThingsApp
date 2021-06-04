@@ -64,14 +64,6 @@ const Register = (props) =>{
 
             <button onClick ={async (event) => {
                 try{
-                    const result = await register(username, password);
-                }catch (error){
-                    setErrorMessage(error.message);
-                }
-            }}> Register </button>
-
-            <button onClick ={async (event) => {
-                try{
                     const result = await login(username, password);
                     setIsLoggedIn(true);
                 }catch (error){
@@ -79,6 +71,13 @@ const Register = (props) =>{
                 }
             }}> Log-In </button>
 
+            <button onClick ={async (event) => {
+                try{
+                    const result = await register(username, password);
+                }catch (error){
+                    setErrorMessage(error.message);
+                }
+            }}> Register </button>
         </form>
 
         </>
