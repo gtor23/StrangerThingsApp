@@ -9,6 +9,7 @@ const Main = () =>{
     const [loggedIn, setIsLoggedIn] = useState(grabToken());
     const [publicPosts, setPublicPosts] = useState ([])
 
+    //fetching user data for displaying posts in profile
     const test = async () => {
         const response = await fetch('https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-FT/users/me',
         { headers: {
@@ -24,8 +25,10 @@ const Main = () =>{
     useEffect(() => {
         fetch('https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-FT/posts')
         .then(response => response.json())
-        .then(result => setPublicPosts(result.data.posts))
+        .then(result => setPublicPosts(result.data.posts))  
     }, []);
+
+    console.log('public', publicPosts)
 
     return (        
         <div>
