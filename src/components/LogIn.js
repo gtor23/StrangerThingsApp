@@ -4,7 +4,9 @@ import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 import {authen} from '../api'
 
-const LogIn =(Props) =>{
+//i dont think this file is being used lol
+
+const LogIn = (Props) => {
 
     const {setIsLoggedIn} = props;
 
@@ -20,7 +22,7 @@ const LogIn =(Props) =>{
             {errorMessage ? <h2 className = 'error'>{errorMessage}</h2> : null}
          
             <input type ='text'
-            value ={username}
+            value = {username}
             className = 'login' 
             placeholder ='username'
             onChange={(event) => setUsername(event.target.value)}
@@ -29,7 +31,7 @@ const LogIn =(Props) =>{
             <input type = 'password' 
             value = {password} 
             className = 'login'
-            placeholder='password'
+            placeholder ='password'
             onChange = {(event) => setPassword(event.target.value)}
             />
 

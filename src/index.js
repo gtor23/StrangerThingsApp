@@ -12,7 +12,7 @@ const Main = () =>{
     useEffect(() => {
         fetch('https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-FT/posts')
         .then(response => response.json())
-        .then(result=> setPublicPosts(result.data.posts))
+        .then(result => setPublicPosts(result.data.posts))
     }, []);
 
     return (        
@@ -27,13 +27,14 @@ const Main = () =>{
                 <Route path = '/profile' component = {Profile} />
                 <Route path = '/addpost' component = {AddPost}/> */}
                 <Route path = '/editpost/:id' render = {() => <Edit publicPosts = {publicPosts} setPublicPosts = {setPublicPosts} />} /> 
+                <Route path = '/profile/:username' render = {() => <Profile />} /> 
     
             {loggedIn ? (
                 <>
                 <div className ='logout'>
                 <h1 className='loggedin'>Successful Log in!</h1> 
-                {/*<button onClick={test}>User test button</button>*/}
-                
+                {/* <button onClick={test}>User test button</button> */}
+               
                 <Posts publicPosts={publicPosts} setPublicPosts={setPublicPosts} loggedIn ={loggedIn} setIsLoggedIn ={setIsLoggedIn} />
                 <span>
                     <button className='logoutbutton' onClick={() => {
